@@ -5,7 +5,7 @@ const Db_1 = require('../Models/Db');
 const co = require('co');
 class FeatureController extends BaseController_1.default {
     constructor() {
-        super(Schema_1.default.Feature, ['device']);
+        super(Schema_1.default.features, ['device']);
     }
     getByDevice(device) {
         return this.schema.findOne({ "device": Db_1.default.objectId(device) }).exec();

@@ -54,7 +54,7 @@ const collectionSchema = {
 }
 
 export default {
-    "Device": create('Device', 'devices', deviceSchema),
-    "Feature": create('Feature', 'features', featureSchema),
-    "Collection": create('Collection', 'collections', collectionSchema)
+    "devices": create('Device', 'devices', deviceSchema),
+    "features": create('Feature', 'features', featureSchema),
+    "collections": create('Collection', 'collections', collectionSchema)
 }

@@ -1,6 +1,4 @@
-﻿import {Model, Document} from 'mongoose';
-import Db from '../Models/Db';
-
+﻿import db from '../Models/Db';
 const co = require('co');
 
 export default class BaseController{
@@ -13,7 +11,7 @@ export default class BaseController{
     }
 
     get(id: any): Promise<any> {
-        var data = this.schema.findOne({ "_id": Db.objectId(id) });
+        var data = this.schema.findOne({ "_id": db.objectId(id) });
         this.populate(data);
         return data.exec();
     }
@@ -40,7 +38,7 @@ export default class BaseController{
 
     delete(id: any): Promise<any> {
         return co(function* () {
-            var data = yield this.schema.findOne({ "_id": Db.objectId(id) }).exec();
+            var data = yield this.schema.findOne({ "_id": db.objectId(id) }).exec();
 
             if (!data)
                 throw new Error('Data is not found');

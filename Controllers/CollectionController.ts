@@ -1,12 +1,10 @@
-﻿import Schema from '../Models/Schema';
+﻿import schema from '../Models/Schema';
 import BaseController from './BaseController';
-import Db from '../Models/Db';
-
 const co = require('co');
 
 class CollectionController extends BaseController {
     constructor() {
-        super(Schema.Feature, ['device']);
+        super(schema.collections, ['device']);
     }
 
     createParameter(query: any): any {

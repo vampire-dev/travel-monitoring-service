@@ -1,9 +1,9 @@
-﻿import Schema from '../Models/Schema';
+﻿import schema from '../Models/Schema';
 import BaseController from './BaseController';
 
 class DeviceController extends BaseController{
     constructor() {
-        super(Schema.Device, []);
+        super(schema.devices, []);
     }
 
     getBySerial(model: string, serial: string) {

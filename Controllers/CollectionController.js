@@ -4,7 +4,7 @@ const BaseController_1 = require('./BaseController');
 const co = require('co');
 class CollectionController extends BaseController_1.default {
     constructor() {
-        super(Schema_1.default.Feature, ['device']);
+        super(Schema_1.default.collections, ['device']);
     }
     createParameter(query) {
         var parameter = {};

@@ -1,16 +1,16 @@
-﻿import Schema from '../Models/Schema';
+﻿import schema from '../Models/Schema';
 import BaseController from './BaseController';
-import Db from '../Models/Db';
+import db from '../Models/Db';
 
 const co = require('co');
 
 class FeatureController extends BaseController {
     constructor() {
-        super(Schema.Feature, ['device']);
+        super(schema.features, ['device']);
     }
 
     getByDevice(device: any): Promise<any> {
-        return this.schema.findOne({ "device": Db.objectId(device) }).exec();
+        return this.schema.findOne({ "device": db.objectId(device) }).exec();
     }
 
     save(data: any): Promise<any> {
@@ -31,7 +31,7 @@ class FeatureController extends BaseController {
         var parameter = {};
 
         if (query['device'])
-            parameter['device'] = Db.objectId(query['device']);
+            parameter['device'] = db.objectId(query['device']);
 
         return parameter;
     }

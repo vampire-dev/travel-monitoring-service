@@ -6,25 +6,28 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "express/express.d.ts": {
-      "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
+      "commit": "40369139ce3199a94fb7a89233ed31c5fe07c567"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
+      "commit": "40369139ce3199a94fb7a89233ed31c5fe07c567"
     },
     "mime/mime.d.ts": {
-      "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
+      "commit": "40369139ce3199a94fb7a89233ed31c5fe07c567"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
-      "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
+      "commit": "40369139ce3199a94fb7a89233ed31c5fe07c567"
     },
     "node/node.d.ts": {
-      "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
+      "commit": "40369139ce3199a94fb7a89233ed31c5fe07c567"
     },
     "mongodb/mongodb.d.ts": {
       "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
     },
     "mongoose/mongoose.d.ts": {
       "commit": "8673f56639274fdfcaa22ded996ec867a5f547df"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "40369139ce3199a94fb7a89233ed31c5fe07c567"
     }
   }
 }

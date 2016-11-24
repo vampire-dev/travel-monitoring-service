@@ -3,7 +3,7 @@ const Schema_1 = require('../Models/Schema');
 const BaseController_1 = require('./BaseController');
 class DeviceController extends BaseController_1.default {
     constructor() {
-        super(Schema_1.default.Device, []);
+        super(Schema_1.default.devices, []);
     }
     getBySerial(model, serial) {
         return this.schema.findOne({ "model": model, "serial": serial }).exec();
