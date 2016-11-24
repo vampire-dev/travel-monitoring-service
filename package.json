@@ -1,0 +1,14 @@
+{
+  "name": "travel-monitoring-service",
+  "version": "0.0.0",
+  "description": "TravelMonitoringService",
+  "main": "app.js",
+  "author": {
+    "name": "wilmi"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.0"
+  }
+}
