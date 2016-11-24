@@ -2,6 +2,7 @@
 import * as bodyParser from 'body-parser';
 import db from './Models/Db';
 import setting from './Setting';
+import Socket from './Socket';
 
 var app = express();
 
@@ -22,3 +23,6 @@ app.listen(setting('port'), (error) => {
 app.get('/', (req, res) => {
     res.status(200).send('Hello Server');
 });
+
+new Socket('MT300');
+new Socket('V01');
