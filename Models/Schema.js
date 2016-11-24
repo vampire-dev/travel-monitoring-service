@@ -51,8 +51,8 @@ const collectionSchema = {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
-    "devices": create('Device', 'devices', deviceSchema),
-    "features": create('Feature', 'features', featureSchema),
-    "collections": create('Collection', 'collections', collectionSchema)
+    "Device": create('Device', 'devices', deviceSchema),
+    "Feature": create('Feature', 'features', featureSchema),
+    "Collection": create('Collection', 'collections', collectionSchema)
 };
 //# sourceMappingURL=Schema.js.map
