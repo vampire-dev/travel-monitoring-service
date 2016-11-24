@@ -3,15 +3,16 @@
 export interface ICommand {
     model: string;
     serial: string;
+    state: string;
     body: any[];
 }
 
 export interface IState {
-    onHandshake: string;
-    onGps: string;
-    onLbs: string;
-    onLinkOK: string;
-    onsmsOK: string;
+    handshake: string;
+    gps: string;
+    lbs: string;
+    linkOk: string;
+    smsOk: string;
 }
 
 export interface IConnection {

@@ -54,9 +54,12 @@
     <TypeScriptCompile Include="Controllers\CollectionController.ts" />
     <TypeScriptCompile Include="Controllers\DeviceController.ts" />
     <TypeScriptCompile Include="Controllers\FeatureController.ts" />
+    <TypeScriptCompile Include="Devices\BaseDevice.ts" />
+    <TypeScriptCompile Include="Devices\IProperties.ts" />
     <TypeScriptCompile Include="Models\Db.ts" />
     <TypeScriptCompile Include="Models\Schema.ts" />
     <TypeScriptCompile Include="Setting.ts" />
+    <TypeScriptCompile Include="Socket.ts" />
     <TypeScriptCompile Include="typings\express-serve-static-core\express-serve-static-core.d.ts" />
     <TypeScriptCompile Include="typings\express\express.d.ts" />
     <TypeScriptCompile Include="typings\mime\mime.d.ts" />
@@ -69,6 +72,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Devices\" />
     <Folder Include="typings\" />
     <Folder Include="typings\express-serve-static-core\" />
     <Folder Include="typings\express\" />
