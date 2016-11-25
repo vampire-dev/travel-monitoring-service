@@ -1,10 +1,15 @@
-﻿import schema from '../Models/Schema';
+﻿import db from '../Models/Db';
+import schema from '../Models/Schema';
 import BaseController from './BaseController';
 const co = require('co');
 
 class CollectionController extends BaseController {
     constructor() {
         super(schema.collections, ['device']);
+    }
+
+    getByDevice(device: any): any {
+        return this.schema.findOne({ "device": db.objectId(device) }).exec();
     }
 
     createParameter(query: any): any {

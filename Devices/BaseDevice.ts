@@ -1,6 +1,7 @@
-﻿import {IConnection, ICommand, IState} from './IProperties';
+﻿import {IConnection, ICommand, IState, IFeature} from './IProperties';
 import DeviceController from '../Controllers/DeviceController';
-
+import FeatureController from '../Controllers/FeatureController';
+import CollectionController from '../Controllers/CollectionController';
 const co = require('co');
 
 export default class BaseDevice {
@@ -104,6 +105,28 @@ export default class BaseDevice {
 
     parse(data: any): ICommand {
         throw "Method is not implemented";
+    }
+
+    savePosition(feature: IFeature): void {
+        co(function* () {
+            var collection = yield CollectionController.getByDevice(feature.device);
+
+            if (collection) {
+                var latestFeature = collection.features[collection.features.length - 1];
+
+                var stationary = (latestFeature.geometry.coordinates[0] === feature.geometry.coordinates[0]
+                    && latestFeature.geometry.coordinates[1] === feature.geometry.coordinates[1]);
+
+                if (!stationary)
+                    collection.features.push(feature);
+            }
+            else {
+                collection = { device: feature.device, features: [feature] };
+            }
+
+            yield CollectionController.save(collection);
+            yield FeatureController.save(feature);
+        });
     }
 
     find(id: any): any {

@@ -1,5 +1,7 @@
 "use strict";
 const DeviceController_1 = require('../Controllers/DeviceController');
+const FeatureController_1 = require('../Controllers/FeatureController');
+const CollectionController_1 = require('../Controllers/CollectionController');
 const co = require('co');
 class BaseDevice {
     constructor() {
@@ -81,6 +83,23 @@ class BaseDevice {
     }
     parse(data) {
         throw "Method is not implemented";
+    }
+    savePosition(feature) {
+        co(function* () {
+            var collection = yield CollectionController_1.default.getByDevice(feature.device);
+            if (collection) {
+                var latestFeature = collection.features[collection.features.length - 1];
+                var stationary = (latestFeature.geometry.coordinates[0] === feature.geometry.coordinates[0]
+                    && latestFeature.geometry.coordinates[1] === feature.geometry.coordinates[1]);
+                if (!stationary)
+                    collection.features.push(feature);
+            }
+            else {
+                collection = { device: feature.device, features: [feature] };
+            }
+            yield CollectionController_1.default.save(collection);
+            yield FeatureController_1.default.save(feature);
+        });
     }
     find(id) {
         return this.connections.filter(e => e.device._id.toString() === id)[0];

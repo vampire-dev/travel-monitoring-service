@@ -47,6 +47,37 @@ class V01 extends BaseDevice_1.default {
         connection.socket.write(replyCommand);
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
+    onLbs(command, connection) {
+    }
+    onGps(command, connection) {
+        var body = command.body;
+        var latSign = body[7].split('N').length > 1 ? 'N' : 'S';
+        var lngSign = body[8].split('E').length > 1 ? 'E' : 'W';
+        var lat = latSign === 'N' ? parseFloat(body[7].split('N')[1])
+            : parseFloat(body[7].split('S')[1]) * -1;
+        var lng = lngSign === 'E' ? parseFloat(body[8].split('E')[1])
+            : parseFloat(body[8].split('W')[1]) * -1;
+        var feature = {
+            device: connection.device._id,
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [lng, lat]
+            },
+            properties: {
+                speed: body[9] === '' ? 0 : parseFloat(body[9]),
+                transmissionMode: body[6] === 0 ? 'Realtime' : 'Delayed',
+                positioningMode: body[5] === 'G' ? 'GPS' : body[5] === 'L' ? 'LBS' : 'Wifi',
+                batteryLevel: parseInt(body[12]) / 100,
+                direction: body[10] === '' ? 0 : parseFloat(body[10]),
+                positionType: this.positionType[body[14]],
+                signalQuality: body[13] === '' ? parseFloat(body[13]) : 0,
+                date: new Date(body[2] + ' ' + body[3])
+            }
+        };
+        this.savePosition(feature);
+        this.onLinkOK(command, connection);
+    }
     parse(data) {
         var commands = data.toString().split(';');
         return {

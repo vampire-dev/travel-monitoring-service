@@ -20,3 +20,22 @@ export interface IConnection {
     socket: Socket;
     device: any;
 }
+
+export interface IFeature {
+    device: any;
+    type: string;
+    geometry: {
+        type: string;
+        coordinates: [number, number];
+    };
+    properties: {
+        speed: number;
+        transmissionMode: string;
+        positioningMode: string;
+        direction: number;
+        batteryLevel: number;
+        signalQuality: number;
+        positionType: string;
+        date: Date;
+    };
+}
