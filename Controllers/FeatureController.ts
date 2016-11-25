@@ -23,7 +23,7 @@ class FeatureController extends BaseController {
             if (!existingEntity)
                 return entity.save();
 
-            return this.schema.update({ "_id": existingEntity._id }, data).exec();
+            return schema.update({ "_id": existingEntity._id }, data).exec();
         });
     }
 

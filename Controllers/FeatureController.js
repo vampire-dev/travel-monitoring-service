@@ -17,7 +17,7 @@ class FeatureController extends BaseController_1.default {
             var existingEntity = yield schema.findOne({ "model": data.model, "serial": data.serial }).exec();
             if (!existingEntity)
                 return entity.save();
-            return this.schema.update({ "_id": existingEntity._id }, data).exec();
+            return schema.update({ "_id": existingEntity._id }, data).exec();
         });
     }
     createParameter(query) {
