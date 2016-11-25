@@ -40,6 +40,7 @@ class BaseDevice {
         });
     }
     onDataReceived(command, connection) {
+        connection.socket.emit('log', 'Device ' + command.serial + ' has sent ' + command.body);
         switch (command.state) {
             case this.state.handshake:
                 this.onHandshake(command, connection);
