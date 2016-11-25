@@ -6,6 +6,7 @@ import setting from './Setting';
 import {IConnection} from './Devices/IProperties';
 import BaseDevice from './Devices/BaseDevice';
 import V01 from './Devices/V01';
+import MT300 from './Devices/MT300';
 
 var app = express();
 
@@ -27,12 +28,25 @@ app.get('/', (req, res) => {
     res.status(200).send('Hello Server');
 });
 
-const v01port: number = parseInt(setting('device').V01);
-const mt300port: number = parseInt(setting('device').MT300);
+var v01port: number = parseInt(setting('device').V01);
+var mt300port: number = parseInt(setting('device').MT300);
 
-const createServer = (model: string, ports: number[]) => {
+var createServer = (model: string, ports: number[]) => {
     var server = net.createServer((socket: net.Socket) => {
-        var device: BaseDevice = new V01();
+        var device: BaseDevice = null;
+
+        switch (model) {
+            case 'V01':
+                device = new V01();
+                break;
+            case 'MT300':
+                device = new MT300();
+                break;
+            default:
+                console.log('Device is not found');
+                return;
+        }
+
         var connection: IConnection = { socket: socket, device: null };
         device.run(connection);
     });
@@ -43,4 +57,4 @@ const createServer = (model: string, ports: number[]) => {
 }
 
 createServer('V01', [v01port, (v01port - 2), (v01port + 4)]);
-//createServer('MT300', [mt300port]);
+createServer('MT300', [mt300port]);

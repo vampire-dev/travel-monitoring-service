@@ -56,6 +56,7 @@
     <TypeScriptCompile Include="Controllers\FeatureController.ts" />
     <TypeScriptCompile Include="Devices\BaseDevice.ts" />
     <TypeScriptCompile Include="Devices\IProperties.ts" />
+    <TypeScriptCompile Include="Devices\MT300.ts" />
     <TypeScriptCompile Include="Devices\V01.ts" />
     <TypeScriptCompile Include="Models\Db.ts" />
     <TypeScriptCompile Include="Models\Schema.ts" />

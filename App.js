@@ -5,6 +5,7 @@ const net = require('net');
 const Db_1 = require('./Models/Db');
 const Setting_1 = require('./Setting');
 const V01_1 = require('./Devices/V01');
+const MT300_1 = require('./Devices/MT300');
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,11 +22,22 @@ app.listen(Setting_1.default('port'), (error) => {
 app.get('/', (req, res) => {
     res.status(200).send('Hello Server');
 });
-const v01port = parseInt(Setting_1.default('device').V01);
-const mt300port = parseInt(Setting_1.default('device').MT300);
-const createServer = (model, ports) => {
+var v01port = parseInt(Setting_1.default('device').V01);
+var mt300port = parseInt(Setting_1.default('device').MT300);
+var createServer = (model, ports) => {
     var server = net.createServer((socket) => {
-        var device = new V01_1.default();
+        var device = null;
+        switch (model) {
+            case 'V01':
+                device = new V01_1.default();
+                break;
+            case 'MT300':
+                device = new MT300_1.default();
+                break;
+            default:
+                console.log('Device is not found');
+                return;
+        }
         var connection = { socket: socket, device: null };
         device.run(connection);
     });
@@ -34,5 +46,5 @@ const createServer = (model, ports) => {
     });
 };
 createServer('V01', [v01port, (v01port - 2), (v01port + 4)]);
-//createServer('MT300', [mt300port]); 
+createServer('MT300', [mt300port]);
 //# sourceMappingURL=App.js.map
