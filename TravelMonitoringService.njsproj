@@ -60,6 +60,7 @@
     <TypeScriptCompile Include="Devices\V01.ts" />
     <TypeScriptCompile Include="Models\Db.ts" />
     <TypeScriptCompile Include="Models\Schema.ts" />
+    <TypeScriptCompile Include="Services.ts" />
     <TypeScriptCompile Include="Setting.ts" />
     <TypeScriptCompile Include="typings\express-serve-static-core\express-serve-static-core.d.ts" />
     <TypeScriptCompile Include="typings\express\express.d.ts" />

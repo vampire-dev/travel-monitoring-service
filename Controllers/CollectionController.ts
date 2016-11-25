@@ -8,8 +8,21 @@ class CollectionController extends BaseController {
         super(schema.collections, ['device']);
     }
 
-    getByDevice(device: any): any {
+    getByDevice(device: any): Promise<any> {
         return this.schema.findOne({ "device": db.objectId(device) }).exec();
+    }
+
+    getAggregates(query: any): any {
+        var dateBetween = {};
+
+        if (query.from && query.to)
+            dateBetween["features.properties.date"] = { "$gte": new Date(query.from), "$lte": new Date(query.to) };
+
+        return this.schema.aggregate([
+            { "$match": { "device": db.objectId(query.device) } },
+            { "$unwind": "$features" },
+            { "$match": dateBetween }
+        ]).exec();
     }
 
     createParameter(query: any): any {

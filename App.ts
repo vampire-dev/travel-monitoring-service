@@ -7,6 +7,7 @@ import {IConnection} from './Devices/IProperties';
 import BaseDevice from './Devices/BaseDevice';
 import V01 from './Devices/V01';
 import MT300 from './Devices/MT300';
+import router from './Services';
 
 var app = express();
 
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.use(router);
 
 app.listen(setting('port'), (error) => {
     console.log('Travel Monitoring Service is running on port %s', setting('port'));
