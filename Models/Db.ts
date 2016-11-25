@@ -1,4 +1,5 @@
 ﻿import * as mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
 
 class Db {
     connect(dsn: string): mongoose.Mongoose {

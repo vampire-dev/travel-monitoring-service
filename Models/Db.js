@@ -1,5 +1,6 @@
 "use strict";
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 class Db {
     connect(dsn) {
         return mongoose.connect(dsn);
