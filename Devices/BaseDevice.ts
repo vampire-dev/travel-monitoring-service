@@ -55,6 +55,8 @@ export default class BaseDevice {
     }
 
     onDataReceived(command: ICommand, connection: IConnection): void {
+        connection.socket.emit('log', 'Device ' + command.serial + ' has sent ' + command.messageBody);
+
         switch (command.state) {
             case this.state.handshake:
                 this.onHandshake(command, connection);
