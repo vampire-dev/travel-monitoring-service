@@ -56,10 +56,10 @@
     <TypeScriptCompile Include="Controllers\FeatureController.ts" />
     <TypeScriptCompile Include="Devices\BaseDevice.ts" />
     <TypeScriptCompile Include="Devices\IProperties.ts" />
+    <TypeScriptCompile Include="Devices\V01.ts" />
     <TypeScriptCompile Include="Models\Db.ts" />
     <TypeScriptCompile Include="Models\Schema.ts" />
     <TypeScriptCompile Include="Setting.ts" />
-    <TypeScriptCompile Include="Socket.ts" />
     <TypeScriptCompile Include="typings\express-serve-static-core\express-serve-static-core.d.ts" />
     <TypeScriptCompile Include="typings\express\express.d.ts" />
     <TypeScriptCompile Include="typings\mime\mime.d.ts" />

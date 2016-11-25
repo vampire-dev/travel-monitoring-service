@@ -1,9 +1,10 @@
 "use strict";
 const express = require('express');
 const bodyParser = require('body-parser');
+const net = require('net');
 const Db_1 = require('./Models/Db');
 const Setting_1 = require('./Setting');
-const Socket_1 = require('./Socket');
+const V01_1 = require('./Devices/V01');
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +21,18 @@ app.listen(Setting_1.default('port'), (error) => {
 app.get('/', (req, res) => {
     res.status(200).send('Hello Server');
 });
-new Socket_1.default('MT300');
-new Socket_1.default('V01');
+const v01port = parseInt(Setting_1.default('device').V01);
+const mt300port = parseInt(Setting_1.default('device').MT300);
+const createServer = (model, ports) => {
+    var server = net.createServer((socket) => {
+        var device = new V01_1.default();
+        var connection = { socket: socket, device: null };
+        device.run(connection);
+    });
+    ports.forEach(port => {
+        server.listen(port, () => { console.log('Device %s is running on port %s', model, port); });
+    });
+};
+createServer('V01', [v01port, (v01port - 2), (v01port + 4)]);
+//createServer('MT300', [mt300port]); 
 //# sourceMappingURL=App.js.map

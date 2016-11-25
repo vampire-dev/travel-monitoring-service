@@ -48,11 +48,14 @@ class BaseDevice {
             case this.state.lbs:
                 this.onLbs(command, connection);
                 break;
-            case this.state.linkOk:
+            case this.state.syncDevice:
                 this.onLinkOk(command, connection);
                 break;
-            case this.state.smsOk:
+            case this.state.syncSms:
                 this.onSmsOk(command, connection);
+                break;
+            case this.state.syncTime:
+                this.onSyncTime(command, connection);
                 break;
             default:
                 connection.socket.emit('log', 'Command is not found');
@@ -71,6 +74,9 @@ class BaseDevice {
         throw "Method is not implemented";
     }
     onSmsOk(command, connection) {
+        throw "Method is not implemented";
+    }
+    onSyncTime(command, connection) {
         throw "Method is not implemented";
     }
     parse(data) {

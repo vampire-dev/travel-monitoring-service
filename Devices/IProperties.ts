@@ -11,8 +11,9 @@ export interface IState {
     handshake: string;
     gps: string;
     lbs: string;
-    linkOk: string;
-    smsOk: string;
+    syncDevice: string;
+    syncTime: string;
+    syncSms: string;
 }
 
 export interface IConnection {
