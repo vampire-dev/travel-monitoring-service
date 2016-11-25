@@ -13,10 +13,11 @@ class FeatureController extends BaseController_1.default {
     save(data) {
         var schema = this.schema;
         return co(function* () {
-            var entity = new schema(data);
-            var existingEntity = yield schema.findOne({ "model": data.model, "serial": data.serial }).exec();
-            if (!existingEntity)
+            var existingEntity = yield schema.findOne({ "device": Db_1.default.objectId(data.device) }).exec();
+            if (!existingEntity) {
+                var entity = new schema(data);
                 return entity.save();
+            }
             return schema.update({ "_id": existingEntity._id }, data).exec();
         });
     }
