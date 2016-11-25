@@ -61,7 +61,7 @@ export default class V01 extends BaseDevice {
     }
 
     onLbs(command: ICommand, connection: IConnection): void {
-
+        this.onLinkOK(command, connection);
     }
 
     onGps(command: ICommand, connection: IConnection): void {

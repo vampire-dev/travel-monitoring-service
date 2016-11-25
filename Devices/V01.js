@@ -48,6 +48,7 @@ class V01 extends BaseDevice_1.default {
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
     onLbs(command, connection) {
+        this.onLinkOK(command, connection);
     }
     onGps(command, connection) {
         var body = command.body;
