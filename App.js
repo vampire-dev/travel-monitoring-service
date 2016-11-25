@@ -21,7 +21,7 @@ app.listen(Setting_1.default('port'), (error) => {
     Db_1.default.connect(Setting_1.default('dsn'));
     console.log('Travel Monitoring DB is running');
 });
-app.get('/', (req, res) => {
+app.get('/travel-monitoring-service', (req, res) => {
     res.status(200).send('Hello Server');
 });
 var v01port = parseInt(Setting_1.default('device').V01);

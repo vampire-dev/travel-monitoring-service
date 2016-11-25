@@ -27,7 +27,7 @@ app.listen(setting('port'), (error) => {
     console.log('Travel Monitoring DB is running');
 });
 
-app.get('/', (req, res) => {
+app.get('/travel-monitoring-service', (req, res) => {
     res.status(200).send('Hello Server');
 });
 
