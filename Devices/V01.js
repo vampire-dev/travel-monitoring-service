@@ -9,7 +9,8 @@ class V01 extends BaseDevice_1.default {
             lbs: '#@H03@#',
             syncDevice: '#@H01@#',
             syncTime: '#@H20@#',
-            syncSms: '#@H06@#'
+            syncSms: '#@H06@#',
+            terminalHeartRate: '#@H10@#'
         };
         this.positionType = {
             0: 'First positioning',

@@ -14,6 +14,7 @@ export interface IState {
     syncDevice: string;
     syncTime: string;
     syncSms: string;
+    terminalHeartRate: string;
 }
 
 export interface IConnection {

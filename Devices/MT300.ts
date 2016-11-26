@@ -14,7 +14,8 @@ export default class MT300 extends BaseDevice {
             lbs: null,
             syncDevice: null,
             syncTime: null,
-            syncSms: null
+            syncSms: null,
+            terminalHeartRate: null
         }
     }
 

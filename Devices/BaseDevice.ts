@@ -76,6 +76,9 @@ export default class BaseDevice {
             case this.state.syncTime:
                 this.onSyncTime(command, connection);
                 break;
+            case this.state.terminalHeartRate:
+                this.onLinkOk(command, connection);
+                break;
             default:
                 connection.socket.emit('log', 'Command is not found');
         }

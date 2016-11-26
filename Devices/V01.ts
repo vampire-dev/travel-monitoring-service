@@ -13,7 +13,8 @@ export default class V01 extends BaseDevice {
             lbs: '#@H03@#',
             syncDevice: '#@H01@#',
             syncTime: '#@H20@#',
-            syncSms: '#@H06@#'
+            syncSms: '#@H06@#',
+            terminalHeartRate: '#@H10@#'
         }
 
         this.positionType = {
