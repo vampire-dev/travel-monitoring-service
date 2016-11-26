@@ -26,7 +26,7 @@ app.get('/travel-monitoring-service', (req, res) => {
 });
 var v01port = parseInt(Setting_1.default('device').V01);
 var mt300port = parseInt(Setting_1.default('device').MT300);
-var createServer = (model, ports) => {
+var createServer = (model, port) => {
     var server = net.createServer((socket) => {
         var device = null;
         switch (model) {
@@ -43,10 +43,11 @@ var createServer = (model, ports) => {
         var connection = { socket: socket, device: null };
         device.run(connection);
     });
-    ports.forEach(port => {
-        server.listen(port, () => { console.log('Device %s is running on port %s', model, port); });
+    server.listen(port, () => {
+        console.log('Device %s is running on port %s', model, port);
     });
 };
-createServer('V01', [v01port, (v01port - 2), (v01port + 4)]);
-createServer('MT300', [mt300port]);
+createServer('V01', v01port);
+createServer('V01', v01port - 2);
+createServer('MT300', mt300port);
 //# sourceMappingURL=App.js.map

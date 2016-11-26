@@ -38,13 +38,13 @@ export default class V01 extends BaseDevice {
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
 
-    onLinkOK(command: ICommand, connection: IConnection): void {
+    onLinkOk(command: ICommand, connection: IConnection): void {
         var replyCommand = 'Link:OK' + String.fromCharCode(0x01, 0x01, 0x01);
         connection.socket.write(replyCommand);
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
 
-    onSyncSms(command: ICommand, connection: IConnection): void {
+    onSmsOk(command: ICommand, connection: IConnection): void {
         var replyCommand = 'SMS:OK' + String.fromCharCode(0x01, 0x01, 0x01);
         connection.socket.write(replyCommand);
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
@@ -61,7 +61,7 @@ export default class V01 extends BaseDevice {
     }
 
     onLbs(command: ICommand, connection: IConnection): void {
-        this.onLinkOK(command, connection);
+        this.onLinkOk(command, connection);
     }
 
     onGps(command: ICommand, connection: IConnection): void {
@@ -95,7 +95,7 @@ export default class V01 extends BaseDevice {
         }
 
         this.savePosition(feature);
-        this.onLinkOK(command, connection);
+        this.onLinkOk(command, connection);
     }
 
     parse(data: any): ICommand {

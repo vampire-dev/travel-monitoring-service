@@ -30,12 +30,12 @@ class V01 extends BaseDevice_1.default {
         connection.socket.write(replyCommand);
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
-    onLinkOK(command, connection) {
+    onLinkOk(command, connection) {
         var replyCommand = 'Link:OK' + String.fromCharCode(0x01, 0x01, 0x01);
         connection.socket.write(replyCommand);
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
-    onSyncSms(command, connection) {
+    onSmsOk(command, connection) {
         var replyCommand = 'SMS:OK' + String.fromCharCode(0x01, 0x01, 0x01);
         connection.socket.write(replyCommand);
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
@@ -48,7 +48,7 @@ class V01 extends BaseDevice_1.default {
         connection.socket.emit('log', 'Server has sent ' + replyCommand);
     }
     onLbs(command, connection) {
-        this.onLinkOK(command, connection);
+        this.onLinkOk(command, connection);
     }
     onGps(command, connection) {
         var body = command.body;
@@ -77,7 +77,7 @@ class V01 extends BaseDevice_1.default {
             }
         };
         this.savePosition(feature);
-        this.onLinkOK(command, connection);
+        this.onLinkOk(command, connection);
     }
     parse(data) {
         var commands = data.toString().split(';');
