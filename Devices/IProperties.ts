@@ -15,6 +15,7 @@ export interface IState {
     syncTime: string;
     syncSms: string;
     terminalHeartRate: string;
+    transmitWifiData: string;
 }
 
 export interface IConnection {

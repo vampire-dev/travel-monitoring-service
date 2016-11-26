@@ -10,7 +10,8 @@ class MT300 extends BaseDevice_1.default {
             syncDevice: null,
             syncTime: null,
             syncSms: null,
-            terminalHeartRate: null
+            terminalHeartRate: null,
+            transmitWifiData: null
         };
     }
     onGps(command, connection) {

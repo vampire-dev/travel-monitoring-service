@@ -14,6 +14,7 @@ export default class BaseDevice {
 
     run(connection: IConnection): void {
         connection.socket.on('data', (data) => {
+            console.log(data.toString());
             if (!connection.device) {
                 connection.socket.emit('auth', data);
                 return;
@@ -77,6 +78,9 @@ export default class BaseDevice {
                 this.onSyncTime(command, connection);
                 break;
             case this.state.terminalHeartRate:
+                this.onLinkOk(command, connection);
+                break;
+            case this.state.transmitWifiData:
                 this.onLinkOk(command, connection);
                 break;
             default:

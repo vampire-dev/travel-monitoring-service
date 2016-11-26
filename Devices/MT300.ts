@@ -15,7 +15,8 @@ export default class MT300 extends BaseDevice {
             syncDevice: null,
             syncTime: null,
             syncSms: null,
-            terminalHeartRate: null
+            terminalHeartRate: null,
+            transmitWifiData: null
         }
     }
 

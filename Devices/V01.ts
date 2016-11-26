@@ -14,7 +14,8 @@ export default class V01 extends BaseDevice {
             syncDevice: '#@H01@#',
             syncTime: '#@H20@#',
             syncSms: '#@H06@#',
-            terminalHeartRate: '#@H10@#'
+            terminalHeartRate: '#@H10@#',
+            transmitWifiData: '#@H14@#'
         }
 
         this.positionType = {
